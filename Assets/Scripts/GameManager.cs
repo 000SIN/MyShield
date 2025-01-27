@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public Text timeTxt;
     public Text nowScore;
 
+    bool isPlay = true;
+
     float time = 0.0f;
 
     private void Awake()
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1.0f;
         InvokeRepeating("MakeSquare", 0f, 1f);
         //InvokeRepeating = 호출을 할 수 있는 기능을 담당하는 함수
         //0초에서 시작해서 1초마다 생성
@@ -32,8 +35,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        timeTxt.text = time.ToString("N2");
+        if (isPlay)
+        {
+            time += Time.deltaTime;
+            timeTxt.text = time.ToString("N2");
+        }
     }
 
     void MakeSquare()
@@ -44,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        isPlay = false;
         Time.timeScale = 0.0f; //timeScale이 0이다 = 끝났다.
         nowScore.text = time.ToString("N2");
         endPanel.SetActive(true); //체크박스가 해지되어 있는걸 키는 거니까 true
