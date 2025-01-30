@@ -597,7 +597,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB2E4\uC2DC\uD558"
+  m_Text: "\uB2E4\uC2DC\uD558\uAE30"
 --- !u!222 &570319548
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1120,8 +1120,9 @@ GameObject:
   - component: {fileID: 1410733019}
   - component: {fileID: 1410733018}
   - component: {fileID: 1410733017}
+  - component: {fileID: 1410733020}
   m_Layer: 5
-  m_Name: Retry
+  m_Name: RetryBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1190,7 +1191,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1410733018}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1410733020}
+        m_TargetAssemblyTypeName: RetryButton, Assembly-CSharp
+        m_MethodName: Retry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1410733018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1229,6 +1242,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410733015}
   m_CullTransparentMesh: 1
+--- !u!114 &1410733020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410733015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 454170836f22ac14b80f49455d6e0960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1418299314
 GameObject:
   m_ObjectHideFlags: 0
