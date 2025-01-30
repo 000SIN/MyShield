@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject endPanel;
     public Text timeTxt;
     public Text nowScore;
+    public Text bestScore;
 
     bool isPlay = true;
 
@@ -53,6 +55,33 @@ public class GameManager : MonoBehaviour
         isPlay = false;
         Time.timeScale = 0.0f; //timeScale이 0이다 = 끝났다.
         nowScore.text = time.ToString("N2");
+        
+        //최고점수가 있다면
+        if(PlayerPrefs.HasKey("bestScore"))
+        {
+            float best = PlayerPrefs.GetFloat("bestScore");
+            //최고점수 < 현재 점수
+            if(best < time)
+            {
+                //현재 점수를 최고 점수에 저장한다.
+                PlayerPrefs.SetFloat("bestScore", time);
+                bestScore.text = time.ToString("N2");
+            }
+            else
+            {
+                bestScore.text = best.ToString("N2");
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("bestScore", time);
+            bestScore.text = time.ToString("N2");
+        }
+            
+            
+        //최고점수가 없다면
+            //현재 점수를 저장한다.
+
         endPanel.SetActive(true); //체크박스가 해지되어 있는걸 키는 거니까 true
         
     }

@@ -15,15 +15,17 @@ public class Square : MonoBehaviour
         float size = Random.Range(0.5f, 1.5f);
         transform.localScale = new Vector2(size, size);
 
-        void Update()
-        {
-            
-        }
+        
+    }
+
+    void Update()
+    {
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             GameManager.Instance.GameOver();
         }
