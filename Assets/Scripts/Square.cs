@@ -23,10 +23,12 @@ public class Square : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+    
         if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("collisonEnter player");
             GameManager.Instance.GameOver();
         }
     }
