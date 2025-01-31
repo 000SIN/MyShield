@@ -14,9 +14,13 @@ public class GameManager : MonoBehaviour
     public Text nowScore;
     public Text bestScore;
 
+    public Animator anim;
+
     bool isPlay = true;
 
     float time = 0.0f;
+
+    string key = "bestScore";
 
     private void Awake()
     {
@@ -53,18 +57,19 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isPlay = false;
-        Time.timeScale = 0.0f; //timeScale이 0이다 = 끝났다.
+        anim.SetBool("isDie", true);
+        Invoke("TimeStop", 0.5f); // 0.5초간 딜레이를 건다.
         nowScore.text = time.ToString("N2");
         
         //최고점수가 있다면
-        if(PlayerPrefs.HasKey("bestScore"))
+        if(PlayerPrefs.HasKey(key))
         {
-            float best = PlayerPrefs.GetFloat("bestScore");
+            float best = PlayerPrefs.GetFloat(key);
             //최고점수 < 현재 점수
             if(best < time)
             {
                 //현재 점수를 최고 점수에 저장한다.
-                PlayerPrefs.SetFloat("bestScore", time);
+                PlayerPrefs.SetFloat(key, time);
                 bestScore.text = time.ToString("N2");
             }
             else
@@ -74,7 +79,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetFloat("bestScore", time);
+            PlayerPrefs.SetFloat(key, time);
             bestScore.text = time.ToString("N2");
         }
             
@@ -84,5 +89,10 @@ public class GameManager : MonoBehaviour
 
         endPanel.SetActive(true); //체크박스가 해지되어 있는걸 키는 거니까 true
         
+    }
+
+    void TimeStop()
+    {
+        Time.timeScale = 0.0f; //timeScale이 0이다 = 끝났다.
     }
 }

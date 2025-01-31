@@ -872,6 +872,7 @@ MonoBehaviour:
   timeTxt: {fileID: 1338004601}
   nowScore: {fileID: 63522891}
   bestScore: {fileID: 1388164333}
+  anim: {fileID: 361870803}
 --- !u!1 &1300644548
 GameObject:
   m_ObjectHideFlags: 0
